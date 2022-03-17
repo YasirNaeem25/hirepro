@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "650700600211",
+    "project_id": "hirepro-ec453",
+    "storage_bucket": "hirepro-ec453.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650700600211:android:33c7bce32b2686599eae66",
+        "android_client_info": {
+          "package_name": "hello.hirePro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650700600211-pjihorje4k2ilvaefqiduav005rntaql.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hello.hirePro",
+            "certificate_hash": "c36c49745eb7eb0cf72f657c9c3144c31a0b958b"
+          }
+        },
+        {
+          "client_id": "650700600211-lq7f3olvf9nbrkmrthnjjp9hd8be5vm7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCD2cldd04YYfDv8N6PQM-TZi_cA9-NM7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650700600211-lq7f3olvf9nbrkmrthnjjp9hd8be5vm7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
