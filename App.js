@@ -1,13 +1,9 @@
 import React from 'react';
-import { LogBox, StatusBar, StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { LogBox, StatusBar, StyleSheet, View, Text, Image, TouchableOpacity ,Alert} from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import Splash from './Components/Splash';
-import SplashScreen2 from './Components/SplashScreen2';
-import SplashScreen3 from './Components/SplashScreen3';
-import SplashScreen4 from './Components/SplashScreen4';
-import SplashScreen5 from './Components/SplashScreen5';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Home from './Components/Home';
@@ -20,11 +16,15 @@ import ContactUs from './Components/ContactUs';
 import OurClientHistory from './Components/OurClientHistory';
 import ServiceEachCategory from './Components/ServiceEachCategory';
 import QoutesScreen from './Components/Qoutes';
-import ServiceSelectMob from './Components/serviceSelectMob';
-import ServiceSelectGraphic from './Components/ServiceSelectGraphic';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FlatListButton from './Components/FlatListButton';
+import SliderScreen from './Components/SliderScreen';
+
+import { stores } from './Components/store/stores';
+import { Provider } from 'react-redux';
+import UploadFileScreen from './Components/UploadFileScreen';
 
 
 LogBox.ignoreLogs(['Reanimated 2']);
@@ -54,6 +54,7 @@ export default function App() {
 
       <Drawer.Navigator drawerContent={(props) => <Customdrawer{...props} />}>
 
+           <Drawer.Screen name='QoutesScreen' component={QoutesScreen} options={{ headerShown: false }} />
         <Drawer.Screen name='DrawerNavigation' component={DrawerNavigation}
           options={{
             headerShown: false, drawerLabel: 'Our Story', drawerIcon: ({ size }) => (
@@ -65,8 +66,12 @@ export default function App() {
             ),
           }} />
 
+
+     
+
+        {/* <Drawer.Screen name='Splash' component={Splash} options={{ headerShown: false }} /> */}
         <Drawer.Screen name='Home' component={Home} options={{
-          headerShown: false, drawerLabel: 'Home', drawerIcon: ({ focused, size }) => (
+          headerShown: false, drawerLabel: 'Home', drawerIcon: ({ }) => (
             <Icon
               name="home"
               size={20}
@@ -86,8 +91,8 @@ export default function App() {
           ),
         }} />
 
-        <Drawer.Screen name='Our Client' component={OurClient} options={{
-          headerShown: false
+        <Drawer.Screen name='OurClient' component={OurClient} options={{
+          headerShown: false, drawerLabel: 'Our Client'
           , drawerIcon: () => (
             <Feather
               name="users"
@@ -127,15 +132,11 @@ export default function App() {
     return (
       <Stack.Navigator >
         <Stack.Screen name='Splash' component={Splash} options={{ headerShown: false }} />
-        <Stack.Screen name='SplashScreen3' component={SplashScreen3} options={{ headerShown: false }} />
-        <Stack.Screen name='SplashScreen2' component={SplashScreen2} options={{ headerShown: false }} />
-        <Stack.Screen name='SplashScreen4' component={SplashScreen4} options={{ headerShown: false }} />
-        <Stack.Screen name='SplashScreen5' component={SplashScreen5} options={{ headerShown: false }} />
-        <Stack.Screen name='ServiceSelectMob' component={ServiceSelectMob} options={{ headerShown: false }} />
+
+        <Stack.Screen name='SliderScreen' component={SliderScreen} options={{ headerShown: false }} />
         <Stack.Screen name='ServiceEachCategory' component={ServiceEachCategory} options={{ headerShown: false }} />
-        <Stack.Screen name='ServiceSelectGraphic' component={ServiceSelectGraphic} options={{ headerShown: false }} />
         <Stack.Screen name='ServiceCoreGreen' component={ServiceCoreGreen} options={{ headerShown: false }} />
-        <Stack.Screen name='QoutesScreen' component={QoutesScreen} options={{ headerShown: false }} />
+        {/* <Stack.Screen name='QoutesScreen' component={QoutesScreen} options={{ headerShown: false }} />  */}
         <Stack.Screen name='OurClientHistory' component={OurClientHistory} options={{ headerShown: false }} />
         <Stack.Screen name='OurStory' component={OurStory} options={{ headerShown: false }} />
 
@@ -143,9 +144,11 @@ export default function App() {
     );
   };
   return (
-    <NavigationContainer initialRouteName="Splash">
-      <DrawerNavigator />
-    </NavigationContainer>
+    <Provider store={stores}>
+      <NavigationContainer initialRouteName="QoutesScreen">
+        <DrawerNavigator />
+      </NavigationContainer>
+    </Provider>
 
   );
 }
